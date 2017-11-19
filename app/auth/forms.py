@@ -1,4 +1,4 @@
-from flask_wtf import Form
+from flask_wtf import FlaskForm
 
 from wtforms import StringField, PasswordField, BooleanField, SubmitField, ValidationError
 from wtforms.validators import Email, Length, Regexp, EqualTo
@@ -6,14 +6,14 @@ from wtforms.validators import Email, Length, Regexp, EqualTo
 from ..models import User
 
 
-class LoginForm(Form):
+class LoginForm(FlaskForm):
     email = StringField('Email', validators=[Length(1, 64), Email()])
     password = PasswordField('Password')
     remember_me = BooleanField('Keep me logged in')
     submit = SubmitField('Log In')
 
 
-class RegistrationForm(Form):
+class RegistrationForm(FlaskForm):
     email = StringField('Email', validators=[Length(1, 64), Email()])
     username = StringField('Username', validators=[
         Length(1, 64), Regexp('^[A-Za-z][A-Za-z0-9_.]*$', 0,
