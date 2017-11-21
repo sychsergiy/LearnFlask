@@ -157,7 +157,7 @@ def followers(username):
                            follows=follows)
 
 
-@main.route('/followed-by/<username>')
+@main.route('/followed_by/<username>')
 def followed_by(username):
     user = User.query.filter_by(username=username).first()
     if user is None:
